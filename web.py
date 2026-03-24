@@ -11,6 +11,7 @@ def index():
     link += "<a href=/about>關於芷嫙</a><hr>"
     link += "<a href=/welcome?u=芷嫙&dep=靜宜資管>GET傳值</a><hr>"
     link += "<a href=/account>POST傳值(帳號密碼)</a><hr>"
+    link += "<a href=/math>數字運算</a><hr>"v
     return link
 
 @app.route("/mis")
@@ -47,17 +48,17 @@ def account():
         return render_template("account.html")
 
 
-@app.route("/account", methods=["GET", "POST"])
+@app.route("/math", methods=["GET", "POST"])
 def math():
     if request.method == "POST":
        a_str = request.form["a"] 
        opt = request.form["opt"]
        b_str = request.form["b"] 
         
-        x = int(a_str)
-        y = int(b_str)
+        a = int(a_str)
+        b = int(b_str)
 
-        if opt == "/" and y == 0:
+        if opt == "/" and b == 0:
             return "除數不能為0"
         else:
             match opt:
