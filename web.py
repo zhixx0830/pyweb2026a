@@ -51,9 +51,9 @@ def account():
 @app.route("/math", methods=["GET", "POST"])
 def math():
     if request.method == "POST":
-       a_str = request.form["a"] 
-       opt = request.form["opt"]
-       b_str = request.form["b"] 
+        a_str = request.form["a"] 
+        opt = request.form["opt"]
+        b_str = request.form["b"] 
         
         a = int(a_str)
         b = int(b_str)
@@ -61,15 +61,14 @@ def math():
         if opt == "/" and b == 0:
             return "除數不能為0"
         else:
-            match opt:
-                case "+":
-                    Result = a + b
-                case "-":
-                    Result = a - b
-                case "*":
-                    Result = a * b
-                case "/":
-                    Result = a / b
+            if opt == "+":
+                Result = a + b
+            elif opt == "-":
+                Result = a - b
+            elif opt == "*":
+                Result = a * b
+            elif opt == "/":
+                Result = a / b
 
             result = f"{a} {opt} {b} 的結果是 {Result}"
             return result
