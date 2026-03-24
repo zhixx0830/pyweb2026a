@@ -11,7 +11,7 @@ def index():
     link += "<a href=/about>關於芷嫙</a><hr>"
     link += "<a href=/welcome?u=芷嫙&dep=靜宜資管>GET傳值</a><hr>"
     link += "<a href=/account>POST傳值(帳號密碼)</a><hr>"
-    link += "<a href=/math>數字運算</a><hr>"v
+    link += "<a href=/math>POST傳值(數字運算)</a><hr>"
     return link
 
 @app.route("/mis")
@@ -35,7 +35,7 @@ def about():
 def welcome():
     x = request.values.get("u")
     y = request.values.get("dep")
-    return render_template("welcome.html", name = x, dep = y)
+    return render_template("welcome.html", name=x, dep=y)
 
 @app.route("/account", methods=["GET", "POST"])
 def account():
@@ -46,7 +46,6 @@ def account():
         return result
     else:
         return render_template("account.html")
-
 
 @app.route("/math", methods=["GET", "POST"])
 def math():
@@ -74,5 +73,6 @@ def math():
             return result
     else:
         return render_template("math.html")
+
 if __name__ == "__main__":
     app.run()
