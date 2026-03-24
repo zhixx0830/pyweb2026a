@@ -46,5 +46,33 @@ def account():
     else:
         return render_template("account.html")
 
+
+@app.route("/account", methods=["GET", "POST"])
+def math():
+    if request.method == "POST":
+       a_str = request.form["a"] 
+       opt = request.form["opt"]
+       b_str = request.form["b"] 
+        
+        x = int(a_str)
+        y = int(b_str)
+
+        if opt == "/" and y == 0:
+            return "除數不能為0"
+        else:
+            match opt:
+                case "+":
+                    Result = a + b
+                case "-":
+                    Result = a - b
+                case "*":
+                    Result = a * b
+                case "/":
+                    Result = a / b
+
+            result = f"{a} {opt} {b} 的結果是 {Result}"
+            return result
+    else:
+        return render_template("math.html")
 if __name__ == "__main__":
     app.run()
